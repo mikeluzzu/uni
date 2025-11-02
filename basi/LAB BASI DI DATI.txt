@@ -1,0 +1,24 @@
+questo Corso da le basi per tutto
+vedremo:
+come si crea un dbms
+come si usa un dbms
+
+Progettazinoe fisica (SQL - DDL)
+
+prova orale e valutazione del Progetto (valuta se l'ho fatto io o no )
+
+sql si divide in due sottocategorie:
+
+DDL - data definition language
+
+il database è il contenitore piu importante di un azienda. 
+
+database vs dmbs: database è un insieme di dati organizzati, il dbms è il gestore che gestisce la base di dati
+
+per il Progetto il prof ci darà lo schema logico e noi dobbiamo fare l'implementazione fisisca usando un particolare dbms. 
+
+
+per creare una tabella persona abbiamo bisogno:
+nome
+cognomen
+residenza:  città, indirizzo, 

@@ -1,0 +1,5 @@
+//Esercizio 10: Anno bisestile
+Chiedi all'utente di inserire un anno. Controlla se è un
+ anno bisestile. Un anno è bisestile se
+è divisibile per 4, tranne i secoli (anni divisibili per 100) che non sono anche divisibili per
+400.
