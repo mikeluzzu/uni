@@ -33,7 +33,10 @@ public:
     void stampaStudente() const;
 
     //costruttore con 4 parametri
-		Studente(string n, string c, int m, int num);
+    Studente(string n, string c, int m, int num);
+	
+    // costruttore per copia
+    Studente(const Studente& altro);
 
 		//getters and setters
 		void setMatricola();
@@ -51,6 +54,10 @@ public:
 		int getVotoMax();
 
 		void getNumEsamiLaurea();
+	
+		bool studentePiuGiovaneDi();
+		
+		Studente & operator = (const Studente & altro);
 };
 
 #endif

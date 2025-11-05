@@ -9,7 +9,6 @@ int main(){
 	s1.getTotaleEsamiSostenuti();
 	s1.getNumEsamiLaurea();
     s1.getVotoMax();
-	Data d1;
 
 	cout << endl;
 	return 0;

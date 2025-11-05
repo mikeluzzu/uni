@@ -42,8 +42,14 @@ using namespace std;
 			numeroEsami = n; 
 		}
 
-		//fare il costruttore per copia
-
+		//costruttore per copia
+		Studente::Studente(const Studente& altro){
+			nome = altro.nome;
+			cognome = altro.cognome;
+			matricola = altro.matricola;
+			dataNascita = altro.dataNascita;
+			numeroEsami = altro.numeroEsami;
+		}
 		//costruttore con 4 parametri
 		Studente::Studente(string n, string c, int m, int num){
 			nome = n;
@@ -112,6 +118,11 @@ using namespace std;
 			int numEsamiLaurea = numeroEsami - esamiSuperati.size();
 			cout << "esami mancanti alla laurea: " << numEsamiLaurea << endl; 
 		}
-
-
- 
+	
+		bool studentePiuGiovaneDi(const Studente & S);
+		
+		Studente & Studente::operator = (const Studente& altro){
+			if (this == &altro){
+				return *this;
+			}
+		} 
