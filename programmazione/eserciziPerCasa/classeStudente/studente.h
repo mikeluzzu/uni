@@ -22,16 +22,6 @@ public:
     Studente(int n);
     Studente(string n, string c, int m, Data d);
     
-    // Set e Get per la data di nascita
-    void setDataNascita(Data d);
-    Data getDataNascita() const;
-    
-    // Altri metodi set/get...
-    
-    // Metodi I/O
-    void leggiStudente();
-    void stampaStudente() const;
-
     //costruttore con 4 parametri
     Studente(string n, string c, int m, int num);
 	
@@ -39,24 +29,27 @@ public:
     Studente(const Studente& altro);
 
 		//getters and setters
+		void setNome();
+		void setCognome();
 		void setMatricola();
-		
+		void setDataNascita();
+        void setVoto();
+
+		string getNome();
+		string getCognome();
 		int getMatricola();
-		
-		void setVoto();
-		
+	    Data getDataNascita() const;
 	   	void getEsamiSuperati();
-	
 		void getTotaleEsamiSostenuti();
-		
-		double getMedia();	
-
+		double getMedia();
 		int getVotoMax();
-
 		void getNumEsamiLaurea();
-	
 		bool studentePiuGiovaneDi();
-		
+
+		// Metodi I/O
+		void leggiStudente();
+		void stampaStudente() const;
+
 		Studente & operator = (const Studente & altro);
 };
 

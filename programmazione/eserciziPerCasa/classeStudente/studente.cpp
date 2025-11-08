@@ -2,36 +2,6 @@
 #include "studente.h"
 using namespace std;
 
-		void Studente::setDataNascita(Data d) {
-		dataNascita = d;
-	}
-
-	Data Studente::getDataNascita() const {
-		return dataNascita;
-	}
-
-	void Studente::leggiStudente() {
-		cout << "Inserisci nome: ";
-		cin >> nome;
-		cout << "Inserisci cognome: ";
-		cin >> cognome;
-		cout << "Inserisci matricola: ";
-		cin >> matricola;
-		cout << "Inserisci data di nascita:" << endl;
-		dataNascita.leggi();  // Chiama il metodo leggi di Data
-	}
-
-	void Studente::stampaStudente() const {
-		cout << "Nome: " << nome << endl;
-		cout << "Cognome: " << cognome << endl;
-		cout << "Matricola: " << matricola << endl;
-		cout << "Data di nascita: ";
-		dataNascita.stampa();  // Chiama il metodo stampa di Data
-		cout << endl;
-	}
-
-
-
 		// costruttore senza parametri. Esami default di una triennale
 		Studente::Studente(){
 			numeroEsami = 20; 
@@ -57,8 +27,21 @@ using namespace std;
 			matricola = m;
 			numeroEsami = num;
 		}
-
+		
 		//getters and setters
+
+		void Studente::setNome(){
+			cout << "Inserisci il nome: " << endl;
+			string inputNome;
+			cin >> inputNome;
+			nome = inputNome; 			
+		}
+		void Studente::setCognome(){
+			cout << "Inserisci il cognome: " << endl;
+			string inputCognome;
+			cin >> inputCognome;
+			cognome = inputCognome;
+ 		}
 		void Studente::setMatricola(){
 			int inputMatricola;
 			cout << "inserisci matricola: " << endl;
@@ -66,7 +49,9 @@ using namespace std;
 			matricola = inputMatricola;
 		}
 		
-		int Studente::getMatricola(){return matricola;}
+		void Studente::setDataNascita(){
+			Data::setData();
+		}
 		
 		void Studente::setVoto(){
 			int voto;
@@ -75,11 +60,15 @@ using namespace std;
 			if (voto >= 18 && voto <= 30){
 				esamiSuperati.push_back(voto);
 			}else if (voto >= 1 && voto <= 17){
-				esamiSostenutiNonSuperati.push_back(voto);
-				
+				esamiSostenutiNonSuperati.push_back(voto);				
 			}
 		}
-		
+
+		string Studente::getNome(){return nome;}
+		string Studente::getCognome(){return cognome;}
+		int Studente::getMatricola(){return matricola;}
+		Data Studente::getDataNascita() const {return dataNascita;}
+
 	   	void Studente::getEsamiSuperati(){
 			cout << "Esami superati: " << endl;
 			for (int i = 0; i<esamiSuperati.size(); i++){
@@ -120,6 +109,26 @@ using namespace std;
 		}
 	
 		bool studentePiuGiovaneDi(const Studente & S);
+		
+		void Studente::leggiStudente() {
+		cout << "Inserisci nome: ";
+		cin >> nome;
+		cout << "Inserisci cognome: ";
+		cin >> cognome;
+		cout << "Inserisci matricola: ";
+		cin >> matricola;
+		cout << "Inserisci data di nascita:" << endl;
+		dataNascita.leggi();  // Chiama il metodo leggi di Data
+		}
+
+		void Studente::stampaStudente() const {
+			cout << "Nome: " << nome << endl;
+			cout << "Cognome: " << cognome << endl;
+			cout << "Matricola: " << matricola << endl;
+			cout << "Data di nascita: ";
+			dataNascita.stampa();  // Chiama il metodo stampa di Data
+			cout << endl;
+		}
 		
 		Studente & Studente::operator = (const Studente& altro){
 			if (this == &altro){

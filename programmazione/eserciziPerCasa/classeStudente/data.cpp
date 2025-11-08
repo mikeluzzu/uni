@@ -4,7 +4,7 @@
 Data::Data() {
     giorno = 1;
     mese = 1;
-    anno = 2000;
+    anno = 1900;
 }
 
 // Costruttore con parametri
@@ -14,10 +14,10 @@ Data::Data(int g, int m, int a) {
     anno = a;
     
     if (!isValida()) {
-        cout << "Attenzione: data non valida, impostata a 01/01/2000" << endl;
+        cout << "Attenzione: data non valida, impostata a 01/01/1900" << endl;
         giorno = 1;
         mese = 1;
-        anno = 2000;
+        anno = 1900;
     }
 }
 
@@ -52,6 +52,13 @@ void Data::setAnno(int a) {
 }
 
 void Data::setData(int g, int m, int a) {
+    cout << "inserisci giorno" << endl;
+    cin >> g;
+    cout << "inserisci mese" << endl;
+    cin >> m;
+    cout << "inserisci anno" << endl;
+    cin >> a;
+    
     giorno = g;
     mese = m;
     anno = a;
