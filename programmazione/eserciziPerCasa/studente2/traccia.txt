@@ -1,0 +1,30 @@
+Esercizio  3  .   
+
+Implementare una classe Studente i cui dati siano (almeno):
+Un intero con il numero di matricola identificativo dello studente (oppure una stringa)
+ • Una data rappresentante la data di nascita (si implementi a questo scopo una classe Data)
+ Un vector di N interi compresi tra 0 e 30, che rappresenta l’elenco dei voti che lo
+ studente ha preso negli esami:
+     Voti da 1 a 17 per esami sostenuti ma non superati
+     Voti da 18 a 30 per esami sostenuti e superati
+     0 per esami mai sostenuti
+ Dotare la classe dei seguenti metodi (almeno):
+  Un costruttore che riceve il numero di esami previsto dal corso di studi
+  Un costruttore di copia
+  Set e get per il numero di matricola
+  set e get per il voto di un dato esame
+  set e get per la data di nascita
+  leggi studente, che utilizza a sua volta il metodo leggi di Data
+  stampa studente, che utilizza a sua volta il metodo stampa di Data
+  getMedia che restituisce la media dei voti dello studente
+  getVotoMax che restituisce il voto più alto dello studente
+  getNumEsamiAllaLaurea che restituisce il numero di esami che mancano allo studente per
+  completare il percorso di studi
+ • bool studentePiuGiovaneDi(const Studente & S) che restituisce true se lo studente è più
+ giovane dello studente S, false altrimenti.
+ • Operatore = di assegnamento
+ Implementare quindi un main che letto in input un array di N studenti, determini e stampi:
+ • La media generale degli studenti;
+ • Lo studente più brillante (quello con la media migliore);
+ • Il voto più alto più frequente;
+ • Il mese in cui sono nati meno studenti

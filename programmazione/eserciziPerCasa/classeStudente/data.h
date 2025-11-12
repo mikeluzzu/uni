@@ -20,20 +20,18 @@ public:
     Data();
     Data(int g, int m, int a);
     
-    // Metodi set
-    void setGiorno(int g);
+    //metodi per la data
+    void setGiorno (int g);
     void setMese(int m);
     void setAnno(int a);
-    void setData(int g, int m, int a);
-    
-    // Metodi get
+
     int getGiorno() const;
     int getMese() const;
     int getAnno() const;
     
-    // Metodi I/O
-    void leggi();
-    void stampa() const;
+    void leggiData();
+
+    void stampaData() const;
 };
 
 #endif

@@ -1,7 +1,40 @@
-#include "data.h"
-#include "studente.h"
-using namespace std;
+#include <iostream>
+#include <vector>
+#include <string>
 
+using namespace std;
+// Costruttore default
+
+class Studente{
+        private:
+
+            string nome;
+            string cognome;
+            int matricola;
+            int numeroEsami;
+            int totaleEsamiSostenuti;
+            vector<int> esamiSostenutiNonSuperati;
+            vector<int> esamiSuperati;
+
+			int giorno;
+        	int mese;
+        	int anno;
+
+			bool isValida() const {
+				if (anno < 1900 || anno > 2100) return false;
+				if (mese < 1 || mese > 12) return false;
+
+				int giorniMese[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+				
+				// Controllo anno bisestile
+				if ((anno % 4 == 0 && anno % 100 != 0) || (anno % 400 == 0)){
+					giorniMese[1] = 29;
+				}
+				if (giorno < 1 || giorno > giorniMese[mese - 1]) return false;
+        
+        		return true;
+			}
+        public:
 		// costruttore senza parametri. Esami default di una triennale
 		Studente() : numeroEsami(20), giorno(1), mese(1), anno(1900), matricola(0), totaleEsamiSostenuti(0) {}
 
@@ -15,6 +48,9 @@ using namespace std;
         cognome = altro.cognome;
         matricola = altro.matricola;
         numeroEsami = altro.numeroEsami;
+        giorno = altro.giorno;
+        mese = altro.mese;
+        anno = altro.anno;
         esamiSuperati = altro.esamiSuperati;
         esamiSostenutiNonSuperati = altro.esamiSostenutiNonSuperati;
         totaleEsamiSostenuti = altro.totaleEsamiSostenuti;
@@ -151,3 +187,60 @@ using namespace std;
         
         return *this;
     }
+
+
+		//metodi per la data
+		void setGiorno (int g) {giorno = g;}
+		void setMese(int m) {mese = m;}
+		void setAnno(int a) {anno = a;}
+
+		int getGiorno() const {return giorno;}
+		int getMese() const {return mese;}
+		int getAnno() const {return anno;}
+
+		void leggiData() {
+				do {
+					cout << "Inserisci il giorno: ";
+					cin >> giorno;
+					cout << "Inserisci il mese: ";
+					cin >> mese;
+					cout << "Inserisci l'anno: ";
+					cin >> anno;
+					
+					if (!isValida()) {
+						cout << "Data non valida! Riprova." << endl;
+					}
+				} while (!isValida());
+			}
+
+		void stampaData() const {
+			if (giorno < 10) cout << "0";
+			cout << giorno << "/";
+			if (mese < 10) cout << "0";
+			cout << mese << "/" << anno;
+		}
+};
+
+int main(){
+	cout << "inserimento array studenti" << endl;
+	cout << "inserire il numero di studenti" << endl;
+	
+	int numeroStudenti;
+	cin >> numeroStudenti;
+	vector<Studente> studenti;
+
+	for (int i = 0; i < numeroStudenti; i++){
+		cout << "Studente: " << (i+1) << endl;
+		Studente s;
+		s.leggiStudente();
+		studenti.push_back(s);				
+	}
+
+	cout << "Elenco studenti: " << endl;
+	for (const auto& s : studenti){
+		s.stampaStudente();
+	}
+
+	cout << endl;
+	return 0;
+}
