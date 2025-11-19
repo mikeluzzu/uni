@@ -17,50 +17,32 @@ trovare la pagina target e -1 se target non appartiene al sito.*/
 #include <vector>
 using namespace std;
 
-class WebSite{
-	private:
-		vector<string> sito; 
-		string homePage;
-		
-};
-
 class WebPage{
 	private:
-		string titoloPagina;
-		string testoPagina;
-		vector<string> linkPagine;
-
+			string titoloPagina;
+			string testoPagina;
+			vector <string> link;
 	public:
-		//costruttore
-		WebPage(string titolo, string testo, vector<string> link){
-			this->titoloPagina = titolo;
-			this->testoPagina = testo;
-			this->linkPagine = link;
-		}
-		
-		//getters
-		bool getConfrontoPagine(string pagina1, string pagina2){
-			if (pagina1 == pagina2){
-				return true;
-			}else{
-				return false;
+			string getTitoloPagina()const {return titoloPagina}
+			string getTestoPagina()const {return testoPagina}
+			void getLink()const {
+				for (int i : link){
+					cout << link[i] << endl;
+				}
 			}
-		}
-		void getTitoloPagina(){
-			cout << titoloPagina << endl;
-		}
-		void getTestoPagina(){
-			cout << testoPagina << endl;
-		}
-		void getLinkPagine(){
-			cout << linkPagine << endl;
-		}
-		
-		//setters 
-		void setNewLink(string newLink){
-			linkPagine.push_back(newLink);
-		}
-};	
+
+			void setLink(string & nuovoLink){
+				link.push_back(nuovoLink);
+			}
+			
+			void setTitoloPagina(string & nuovoTitolo){
+				titoloPagina = nuovoTitolo;
+			}
+
+			void setTestoPagina(string & nuovoTesto){
+				testoPagina = nuovoTesto;
+			}
+};
 
 int main(){
 		WebPage homepage("homepage", "Sono la homepage", "");
