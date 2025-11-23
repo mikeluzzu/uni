@@ -1,4 +1,4 @@
-
+#include <iostream>
 using namespace std;
 class Data {
 private:
@@ -22,5 +22,22 @@ public:
         giorno = g;
         mese = m;
         anno = a;
+    }
+
+    void getVotoMax(){
+
+    }
+
+    bool maggioreDi(const Data& altra) const {
+        //confronto prima l'anno
+        if (anno > altra.anno){return true;}
+        if (anno < altra.anno){return false;}
+        //se gli anni sono uguali, confronta il mese
+        if (mese > altra.mese){return true;}
+        if (mese < altra.mese){return false;}
+        // se anche i mesi sono uguali confronta i giorni
+        if (giorno > altra.giorno){return true;}
+
+        return false;
     }
 };
