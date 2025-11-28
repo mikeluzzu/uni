@@ -17,7 +17,7 @@ public:
             voti[i] = 0; // Inizializza tutti a 0 (esami non sostenuti)
         }
     }
-    
+    // regola dei 3: costruttore per copia, operatore di assegnamento e operatore di uguaglianza
     // Costruttore di copia
     StudenteDinamico(const StudenteDinamico& altro) : 
         matricola(altro.matricola),
@@ -67,7 +67,9 @@ public:
     
     // Set e get data nascita
     void setDataNascita(const Data& d) { dataNascita = d; }
-    Data getDataNascita() const { return dataNascita; }
+    // prendo direttamente il riferimento alla data, const perchè non posso modificarlo perchè è un get
+    // se volessi modificarlo devo passare dai get fatti appositamente
+    const Data& getDataNascita() const { return dataNascita; }
     
     // getMedia - calcola la media dei voti superati
     float getMedia() const {

@@ -11,7 +11,7 @@ Se non sono presenti computers, restituire -1.
             
 */
 int GestoreComputers::calcolaMedia() {
-    
+    for()
     return -1;
 }
 
