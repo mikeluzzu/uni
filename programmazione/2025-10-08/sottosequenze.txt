@@ -1,0 +1,3 @@
+Leggere due sequenze di interi terminata da -1 e verificare se la seconda è sottosequenza della prima.
+In caso affermativo, restituire la posizione di inizio della sottosequenza.
+Nota: utilizzare array dinamici e puntatori
