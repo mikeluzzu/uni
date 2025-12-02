@@ -11,18 +11,14 @@ private:
    Node<T> *first;
    Node<T> *last;
 public:
-   List():first(nullptr),last(nullptr)
-   {}
+   List():first(nullptr),last(nullptr){}
    ~List();
    void pushFront(const T&);
    bool popFront();
    void pushBack(const T&);
    bool popBack();
    bool find(const T&) const;
-   bool empty() const
-   {
-      return first==nullptr;
-   }
+   bool empty() const {return first==nullptr;}
    Node<T>* front();
    void print() const;
    void remove(const T&); 
