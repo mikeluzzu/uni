@@ -14,5 +14,5 @@ void trovaTarget(int * nums, int target){
 }
 
 int main(){
-    
+	    
 }

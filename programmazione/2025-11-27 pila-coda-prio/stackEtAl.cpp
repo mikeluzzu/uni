@@ -3,7 +3,7 @@
 #include<cassert>
 
 using namespace std;
-
+// creazione del template della classe generale stack 
 template<typename T>
 class Stack{
 private:
