@@ -2,8 +2,7 @@
 
 select
   -- seleziono le colonne che mi interessano
-  d.Nome,
-  d.Cognome,
+  concat(d.Nome, ' ', d.Cognome) as Docente,
   d.Tipo,
   i.NomeInsegnamento
   

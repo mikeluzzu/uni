@@ -8,15 +8,13 @@ select
   l.AnnoAccademico,
 
   ms.Matricola,
-  s.Nome as NomeStudente,
-  s.Cognome as CognomeStudente,
-  cl.NomeCorsoLaurea,
+  concat(s.Nome, ' ', s.Cognome) as Studente,
+  cl.NomeCorsoLaurea as CorsoLaurea,
 
-  dr.Nome as NomeRelatore,
-  dr.Cognome as CognomeRelatore,
-
-  dc.Nome as NomeControRelatore,
-  dc.Cognome as CognomeControRelatore
+  concat(dr.Nome, ' ', dr.Cognome) as Relatore,
+  
+  concat(dc.Nome, ' ', dc.Cognome) as Controrelatore
+  
 
 from laurea l
 

@@ -3,10 +3,8 @@
 
 SELECT 
     -- Dati del docente
-    d.Nome AS NomeDocente,
-    d.Cognome AS CognomeDocente,
+    concat(d.Nome, ' ', d.Cognome) as Docente,
 
-    
     -- Dati della laurea
     l.Titolo AS TitoloTesi,
     l.Voto AS VotoLaurea,
@@ -14,8 +12,7 @@ SELECT
     l.DataLaurea,
     
     -- Dati dello studente laureato
-    s.Nome AS NomeStudente,
-    s.Cognome AS CognomeStudente,
+    concat(s.Nome, ' ', s.Cognome) as Studente,
     ms.Matricola,
     
     -- Dati del corso di laurea
@@ -38,4 +35,6 @@ LEFT JOIN studente s ON ms.IdStudente = s.IdStudente
 -- JOIN con corso di laurea
 LEFT JOIN corsolaurea cl ON ms.IdCorsoLaurea = cl.IdCorsoLaurea
 
+where DataLaurea is not null
+  
 ORDER BY d.Cognome, d.Nome, l.DataLaurea DESC;
