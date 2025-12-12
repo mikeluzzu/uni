@@ -20,15 +20,16 @@ int main(){
 
 vector<int> twoSum(vector<int>& nums, int target) {
     // la chiave è il valore nell'array mentre il valore è il suo indice 
-    //(in questo caso specifico invertiamo il concetto di accesso rispetto al vettore, uso il valore per accedere al suo indice)
+    //(in questo caso specifico invertiamo il concetto di accesso
+	// rispetto al vettore, uso il valore per accedere al suo indice)
     unordered_map<int, int> mappa;
     vector<int> solution;
 
     for(int i = 0; i < nums.size(); i++){
-    	
-
-    	//se (target - nums[i]) è presente come chiave nella mappa allora ho trovato una soluzione
-	//avrei potuto fare if (find != end) solution.push_back(mappa[target-nums[i]])
+    
+	//se (target - nums[i]) è presente come chiave nella mappa allora
+	//ho trovato una soluzione avrei potuto fare if (find != end)
+	//solution.push_back(mappa[target-nums[i]])
 		auto it = mappa.find(target - nums[i]);
     	if(it != mappa.end())
     	{

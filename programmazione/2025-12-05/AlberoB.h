@@ -106,6 +106,10 @@ public:
         AC.pradice = pradice->ppadre;
         return AC;
     };
+
+    bool isHeap(const AlberoB<int> & a){
+        
+    }
 };
 
 #endif

@@ -15,40 +15,26 @@ StudenteDinamico::StudenteDinamico(): matricola(0), dataDiNascita(), esamiSosten
     }
 }
 
-StudenteDinamico::StudenteDinamico(const StudenteDinamico& oStudente): matricola(oStudente.matricola),
-                                                                       dataDiNascita(oStudente.dataDiNascita),
-                                                                       esamiSostenuti(oStudente.esamiSostenuti) {
+StudenteDinamico::StudenteDinamico(const StudenteDinamico& oStudente): 
+    matricola(oStudente.matricola),                                                  
+    dataDiNascita(oStudente.dataDiNascita),                                              
+    esamiSostenuti(oStudente.esamiSostenuti) {
     setElencoEsami(oStudente.getElencoEsami());
 }
 
-int StudenteDinamico::getMatricola() const {
-    return matricola;
-}
+int StudenteDinamico::getMatricola() const {return matricola}
 
-void StudenteDinamico::setMatricola(int matricola) {
-    this->matricola = matricola;
-}
+void StudenteDinamico::setMatricola(int matricola) {this->matricola = matricola;}
 
-const Data& StudenteDinamico::getDataDiNascita() const {
-    return dataDiNascita;
-}
+const Data& StudenteDinamico::getDataDiNascita() const {return dataDiNascita;}
 
-void StudenteDinamico::setDataDiNascita(const Data& dataDiNascita) {
-    this->dataDiNascita = dataDiNascita;
-}
+void StudenteDinamico::setDataDiNascita(const Data& dataDiNascita) {this->dataDiNascita = dataDiNascita;}
 
-int StudenteDinamico::getEsamiSostenuti() const {
-    return esamiSostenuti;
-}
+int StudenteDinamico::getEsamiSostenuti() const {return esamiSostenuti;}
 
-void StudenteDinamico::setEsamiSostenuti(int esamiSostenuti) {
-    this->esamiSostenuti = esamiSostenuti;
-}
+void StudenteDinamico::setEsamiSostenuti(int esamiSostenuti) {this->esamiSostenuti = esamiSostenuti;}
 
-const int* StudenteDinamico::getElencoEsami() const {
-    return elencoEsami;
-}
-
+const int* StudenteDinamico::getElencoEsami() const {return elencoEsami;}
 
 int StudenteDinamico::getEsame(int i) const {
     if (i > 0 && i < 25)
@@ -66,7 +52,6 @@ void StudenteDinamico::setEsame(int i, int voto) {
         cout << "ERRORE Esame inesistente" << endl;
 }
 
-
 void StudenteDinamico::setElencoEsami(const int* oElencoEsami) {
     if (elencoEsami != nullptr) {
         delete[] elencoEsami;
@@ -80,10 +65,6 @@ void StudenteDinamico::setElencoEsami(const int* oElencoEsami) {
     }
 
 }
-
-
-
-
 
 float StudenteDinamico::getMedia() const {
     float sommaVoti = 0;
@@ -119,8 +100,7 @@ int StudenteDinamico::getNumEsamiAllaLaurea() const {
 }
 
 bool StudenteDinamico::studentePiuGiovane(const StudenteDinamico& studente) const {
-
-    return dataDiNascita<studente.dataDiNascita;
+    return dataDiNascita < studente.getDataDiNascita();
 }
 
 StudenteDinamico& StudenteDinamico::operator=(const StudenteDinamico& oStudente) {
@@ -143,7 +123,6 @@ bool StudenteDinamico::aggiungiEsame(int voto) {
                 esamiSostenuti++;
                 break;
             }
-
         }
     return added;
 }
@@ -151,9 +130,6 @@ bool StudenteDinamico::aggiungiEsame(int voto) {
 StudenteDinamico::~StudenteDinamico() {
     delete[] elencoEsami;
 }
-
-
-
 
 ostream& operator<<(ostream& out, const StudenteDinamico& s) {
     out<<"Matricola: "<<s.matricola<<endl;

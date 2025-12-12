@@ -16,6 +16,8 @@ public:
     T top () {return S.back();}
 };
 
+
+// classe template generale per la coda
 template<typename T>
 class Queue{
 private:
@@ -41,6 +43,7 @@ public:
     T front () {return list<T>::front();}
 };
 
+// classe coda che eredita la lista con priorita
 template<typename T>
 class QueueINHwithPriority:public QueueINH<T>{
 public:
