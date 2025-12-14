@@ -81,10 +81,14 @@ void addAccount(vector<Account>& accounts){
 
 	cout << "Enter the password: " << endl;
 	getline (cin, iPassword);
-
+	
+	
 	cout << "Enter the email: " << endl;
 	getline (cin, iEmail);
-
+	while(!validateEmail()){
+		cout << "Enter a valid email: " << endl;
+		getline (cin, iEmail);
+	}
 	accounts.push_back(Account(iService, iUsername, iPassword, iEmail));
 	cout << "Account added successfully." << endl;
 }
@@ -109,37 +113,58 @@ void removeAccount(vector<Account>& accounts, string & serviceName){
 	}
 	}
 
-void modifyAccount(vector<Account>& accounts, string& serviceName){
-	if(accounts.empty()){
-		cout << "No accounts to modify." << endl;
-		return; 
-	}
 
-	string mService, mUsername, mPassword, mEmail;
+void modifyAccount(vector<Account>& accounts){
+	string serviceName;
+	cout << "Enter the service name to modify: ";
+	cin.ignore();
+	getline(cin, serviceName);
 	
-	cout << "Enter the new service name: " << endl;
-	getline (cin, mService);
-
-	cout << "Enter the new username: " << endl;
-	getline (cin, mUsername);
-
-	cout << "Enter the new password: " << endl;
-	getline (cin, mPassword);
-
-	cout << "Enter the new email: " << endl;
-	getline (cin, mEmail);
-
-
+	if(accounts.empty()){
+			cout << "No accounts to modify." << endl;
+			return; 
+		}
 
 	for(size_t i = 0; i < accounts.size(); i++){
-		if (accounts[i].getService() == serviceName){
-			accounts[i].setService(mService);
-			accounts[i].setUsername(mUsername);
-			accounts[i].setPassword(mPassword);
-			accounts[i].setEmail(mEmail);
-			cout << "Account modified correctly." << endl;
+		if(accounts[i].getService() == serviceName){
+			
+			string mService, mUsername, mPassword, mEmail;
+			
+			cout << "Enter the new service name: " << endl;
+			getline (cin, mService);
+
+			cout << "Enter the new username: " << endl;
+			getline (cin, mUsername);
+
+			cout << "Enter the new password: " << endl;
+			getline (cin, mPassword);
+
+			cout << "Enter the new email: " << endl;
+			getline (cin, mEmail);
+
+
+
+			for(size_t i = 0; i < accounts.size(); i++){
+				if (accounts[i].getService() == serviceName){
+					accounts[i].setService(mService);
+					accounts[i].setUsername(mUsername);
+					accounts[i].setPassword(mPassword);
+					accounts[i].setEmail(mEmail);
+					cout << "Account modified correctly." << endl;
+				}
+			}
 		}
 	}
+}
+
+bool validateEmail(const string& email){
+	for(char c : email){
+		if(c == '@'){
+			return true;
+		}	
+	}
+	cout << "Email not valid, it should have a '@'" << endl;
+	return false;
 }
 
 void printMenu(){
@@ -189,13 +214,8 @@ int main(){
 			
 			case 4:
 				{
-				string serviceName;
 				cout << endl;
-				cout << "Enter the service name to modify: ";
-				cin.ignore();
-				getline(cin, serviceName);
-				displayAccount(accounts,serviceName);
-				modifyAccount(accounts,serviceName);
+				modifyAccount(accounts);
 				}
 				break;
 			case 5:
