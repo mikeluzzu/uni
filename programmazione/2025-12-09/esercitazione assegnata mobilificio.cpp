@@ -29,8 +29,7 @@ private:
    string Collaboratore;
 public:
    Mobile(const string &m="", const string &p="", int pr=0, Tipo t=TAVOLO, const string &c=""):
-           nomeMobile(m), Produttore(p), Prezzo(pr), tipo(t), Collaboratore(c)
-   {} 
+    nomeMobile(m), Produttore(p), Prezzo(pr), tipo(t), Collaboratore(c) {} 
    string getNome() const {return nomeMobile;}
    string getProduttore() const {return Produttore;}
    int getPrezzo() const {return Prezzo;}

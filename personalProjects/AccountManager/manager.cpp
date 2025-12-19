@@ -64,7 +64,6 @@ void displayAccount(vector<Account>& accounts, string& serviceName){
 		if (accounts[i].getService() == serviceName){
 			cout << accounts[i] << endl;
 		}
-		
 	}
 }
 
@@ -112,7 +111,6 @@ void removeAccount(vector<Account>& accounts, string & serviceName){
 		cout << "Account not found." << endl;
 	}
 	}
-
 
 void modifyAccount(vector<Account>& accounts){
 	string serviceName;

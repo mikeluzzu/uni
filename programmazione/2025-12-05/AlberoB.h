@@ -15,15 +15,14 @@ template <class T>
 struct SNodo{
 	T vinfo; // parte informativa
 	SNodo *ppadre, *pfiglio[2]; // puntatori al padre e ai due figli
-	SNodo( const T& inf ): vinfo(inf)
-	{	ppadre = pfiglio[SIN] = pfiglio[DES] = 0;
+	SNodo(const T& inf): vinfo(inf){	
+        ppadre = pfiglio[SIN] = pfiglio[DES] = 0;
 	}
-	~SNodo( ) {delete pfiglio[SIN]; delete pfiglio[DES];}
+	~SNodo() {delete pfiglio[SIN]; delete pfiglio[DES];}
 };
 
 template <class T>
-class AlberoB
-{
+class AlberoB{
 protected:
 	SNodo<T>* pradice; // puntatore alla radice
 public:
@@ -70,7 +69,7 @@ public:
 	bool nullo() const { return pradice == 0; };
 
 	// restituisce una copia dell'albero
-    AlberoB<T> copia () const {
+    AlberoB<T> copia() const {
         if ( nullo() ) return AlberoB<T>();
         AlberoB<T> AC(radice());
         AlberoB<T> fs = figlio(SIN).copia();

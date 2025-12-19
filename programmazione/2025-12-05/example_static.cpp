@@ -28,26 +28,21 @@ class Prodotto{
         
     }
     
-    bool operator<(const Prodotto& p2){
-        
-        return nome<p2.nome;
-    }
-    bool operator==(const Prodotto& p2){
-        return nome==p2.nome&&id==p2.id;
-    }
+    bool operator<(const Prodotto& p2) {return nome<p2.nome;}
+    bool operator==(const Prodotto& p2) {return nome==p2.nome&&id==p2.id;}
+
     friend ostream & operator<<(ostream & o, const Prodotto & p){
-        o<<p.id<<p.nome<<"progressivo:"<<progressivo<<endl;
+        o << p.id << p.nome << "progressivo:" << progressivo << endl;
         return o;
     }
+
     string getNome()const{return nome;}
     
 };
 
 unsigned int Prodotto::progressivo=0;
 
-bool mycmp(const Prodotto& p1, const Prodotto& p2){
-    return p1.getNome()>p2.getNome();
-}
+bool mycmp(const Prodotto& p1, const Prodotto& p2){return p1.getNome()>p2.getNome();}
 
 int main()
 {
