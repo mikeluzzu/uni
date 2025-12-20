@@ -3,7 +3,8 @@
 select
   -- seleziono le colonne che mi interessano
   concat(d.Nome, ' ', d.Cognome) as Docente,   
-  i.NomeInsegnamento
+  i.NomeInsegnamento,
+  e.AnnoAccademico
 
 from docente d
 -- join per prendere l'edizione insegnamento

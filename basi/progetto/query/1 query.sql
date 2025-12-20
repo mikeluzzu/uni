@@ -9,7 +9,9 @@ select
   s.Nome,
   s.DataNascita,
   s.Sesso,
-  s.Straniero,
+  case when s.Straniero = 0 then 'No'
+       when s.Straniero = 1 then 'Si'
+  end as Straniero,
   cr.NomeComune as ComuneResidenza,
   cd.NomeComune as ComuneDomicilio
   

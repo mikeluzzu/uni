@@ -5,57 +5,64 @@
   -le iscrizioni ai corsi di studi effettuate, con data, anno accademico e tipo di iscrizione
 */
 
-select
-  -- dati anagrafici studente
-  s.IdStudente,
+-- query separate tra dati anagrafici, esami, iscrizione
+
+-- parte 1 : Dati anagrafici, matricola e laurea
+SELECT
   s.Nome,
   s.Cognome,
-
-  cr.NomeComune as ComuneResidenza,
-  cd.NomeComune as ComuneDomicilio,
-
-  -- dati matricola
+  s.DataNascita,
+  s.Sesso,
+  s.CodiceFiscale,
+  cr.NomeComune AS ComuneResidenza,
+  cd.NomeComune AS ComuneDomicilio,
   ms.Matricola,
   ms.DataImmatricolazione,
   cl.NomeCorsoLaurea,
-
-  -- esami svolti
-  ins.NomeInsegnamento as EsameInsegnamento,
-  vf.DataVerifica as DataEsame,
-  vf.Voto as VotoEsame,
-  vf.Lode as Lode,
-  vf.Validita as Valido,
-  vf.AnnoAccademico as AAEsame,
-
-  -- titolo di studi
-  l.Titolo as TitoloLaurea,
+  l.Titolo AS TitoloLaurea,
   l.DataLaurea,
-  l.Voto as VotoLaurea,
-  l.Lode as LodeLaurea,
-  l.AnnoAccademico as AALaurea,
+  l.Voto AS VotoLaurea,
+  l.Lode AS LodeLaurea,
+  l.AnnoAccademico AS AALaurea
+FROM studente s
+LEFT JOIN comune cr ON s.IdResidenza = cr.IdComune
+INNER JOIN comune cd ON s.IdDomicilio = cd.IdComune
+LEFT JOIN matricolastudente ms ON s.IdStudente = ms.IdStudente
+LEFT JOIN corsolaurea cl ON ms.IdCorsoLaurea = cl.IdCorsoLaurea
+LEFT JOIN laurea l ON ms.Matricola = l.Matricola
+ORDER BY s.Cognome, s.Nome;
 
-  -- iscrizioni
-  i.AnnoAccademico as AAIscrizione,
+-- parte 2: Esami sostenuti per ogni studente
+SELECT
+  s.Cognome,
+  s.Nome,
+  ms.Matricola,
+  cl.NomeCorsoLaurea,
+  ins.NomeInsegnamento,
+  vf.DataVerifica AS DataEsame,
+  vf.Voto AS VotoEsame,
+  vf.Lode,
+  vf.Validita,
+  vf.AnnoAccademico AS AAEsame
+FROM studente s
+INNER JOIN matricolastudente ms ON s.IdStudente = ms.IdStudente
+INNER JOIN verifichefinali vf ON ms.Matricola = vf.Matricola
+INNER JOIN insegnamento ins ON vf.IdInsegnamento = ins.IdInsegnamento
+LEFT JOIN corsolaurea cl ON ms.IdCorsoLaurea = cl.IdCorsoLaurea
+ORDER BY s.Cognome, s.Nome, vf.DataVerifica;
+
+-- parte 3 : Iscrizioni annuali per ogni studente
+SELECT
+  s.Cognome,
+  s.Nome,
+  ms.Matricola,
+  cl.NomeCorsoLaurea,
+  i.AnnoAccademico,
   i.DataIscrizione,
   i.ProgressivoAnno,
-  i.Tipo as TipoIscrizione
-
-from studente s
--- join base
-left join comune cr on s.IdResidenza = cr.IdComune
-left join comune cd on s.IdDomicilio = cd.IdComune
-left join matricolastudente ms on s.IdStudente = ms.IdStudente
-left join corsolaurea cl on ms.IdCorsoLaurea = cl.IdCorsoLaurea
--- join per esami
-left join verifichefinali vf on ms.Matricola = vf.Matricola
-left join insegnamento ins on vf.IdInsegnamento = ins.IdInsegnamento
-
--- laurea
-left join laurea l on ms.Matricola = l.Matricola
-
--- iscrizioni
-left join iscrizione i on ms.Matricola = i.Matricola
-
-order by s.Cognome, s.Nome, ms.Matricola, vf.DataVerifica, i.AnnoAccademico;
-
-
+  i.Tipo AS TipoIscrizione
+FROM studente s
+INNER JOIN matricolastudente ms ON s.IdStudente = ms.IdStudente
+INNER JOIN iscrizione i ON ms.Matricola = i.Matricola
+LEFT JOIN corsolaurea cl ON ms.IdCorsoLaurea = cl.IdCorsoLaurea
+ORDER BY s.Cognome, s.Nome, i.AnnoAccademico;
