@@ -1,54 +1,55 @@
 #ifndef WEBSITE_H
 #define WEBSITE_H
 
-#include "WebPage.h"
-
+#include "Webpage.h"
 #include <queue>
 #include <algorithm>
 
 using namespace std;
 
-class WebSite{
-    private:   
-        WebPage homepage;
+
+class Website {
+    private:    
+        Webpage homepage; 
 
     public:
-        // constructor
-        WebSite() = default;
-        WebSite(const WebPage& w) : homepage(w){}
+        Website() = default; 
+        Website(Webpage h): homepage(h) {}
 
-        int find_webpage(const WebPage& target) const{
-            vector<WebPage> visitati;
-            queue<WebPage> daVisitare;
-            
+        int find_webpage(const Webpage& target) const {
+            queue<Webpage> daVisitare;
             daVisitare.push(homepage);
-            visitati.push_back(homepage);
 
-            int level = 0;
+            vector<Webpage> visitate;
+            visitate.push_back(homepage);
 
-            while (!daVisitare.empty()){
-                int levelSize = daVisitare.size();
+            int level = 0;  // contatore dei livelli
+            
+            while (!daVisitare.empty()) {
+                int levelSize = daVisitare.size();  // numero di nodi in questo livello
                 
-                for (int i = 0; i < levelSize; i++){
-                    WebPage curr_page = daVisitare.front(); // prendo in lettura la pagina corrente 
-                    daVisitare.pop(); // estraggo la pagina corrente
-
+                // processa tutti i nodi del livello corrente
+                for (int i = 0; i < levelSize; i++) {
+                    Webpage curr_page = daVisitare.front(); // prendo in lettura la pagina corrente e la estraggo con pop()
+                    daVisitare.pop();
+                    
+                    // se ho trovato target, ritorno il livello
                     if (curr_page == target)
                         return level;
-
-                    for (WebPage* w : curr_page.getLink()){
-                        if (find(visitati.begin(), visitati.end(), *w) == visitati.end()){
-                            visitati.push_back(*w);
+                    
+                    for (Webpage* w : curr_page.getLink()) {
+                        if (find(visitate.begin(), visitate.end(), *w) == visitate.end()) {
+                            visitate.push_back(*w);
                             daVisitare.push(*w);
                         }
                     }
                 }
-                level++;
+                
+                level++;  // incrementa il livello dopo aver processato tutti i nodi del livello
             }
+
             return -1;
         }
-    
-
 };
 
 #endif

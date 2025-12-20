@@ -1,35 +1,33 @@
 #ifndef WEBPAGE_H
 #define WEBPAGE_H
 
-#include<string>
-#include<vector>
-#include<iostream>
+#include <string>
+#include <vector>
 
 using namespace std;
 
-class WebPage{
 
+class Webpage {
     private:
-        const string titolo;
+        const string titolo; 
         const string testo;
-        vector<WebPage> link;
+        vector<Webpage*> link; 
+
     public:
-        // constructors
-        WebPage() = default;
+        Webpage(): link({}) {}
+        
+        Webpage(const string& ti, const string& te, const vector<Webpage*>& l): titolo(ti), testo(te), link(l) {}
 
-        // getters
-        string getTitolo()const{return titolo;}
-        string getTesto()const {return testo;}
-        const vector<WebPage*>& getLink()const {return link;}
-        
-        // setters
-        void aggiungiLink(vector<WebPage*>& w){this->link.push_back(w);} 
+        string getTitolo() const {return titolo;}
+        string getTesto() const {return testo;}
+        const vector<Webpage*>& getLink() const {return link;}
 
-        // operators
-        bool operator == (const WebPage& other) {return titolo == other.getTitolo();}
-        
-        
+        void aggiungiLink(Webpage* w) {link.push_back(w);}
+
+        bool operator==(const Webpage& other) {
+            return titolo==other.titolo;  
+        }
 };
 
-
 #endif
+
