@@ -11,14 +11,11 @@ La classe Grafo dispone dei seguenti metodi pubblici (dove g è un’istanza del
 • g(i,j) che restituisce true se esiste un arco dal nodo i al nodo j e false altrimenti
 Nota: Verrà assegnato un piccolo bonus a chi svolgerà l’esercizio in modo da ‘evitare’, quando possibile, di verificare le condizioni
 computazionalmente più onerose (la complessità dei 3 metodi pubblici della classe Grafo è O(1)
-
 */
 
 #include "Grafo.h"
 #include <vector>
-
 using namespace std;
-
 
 bool f(const Grafo& g) {
     vector<int> grado_uscente(g.n());
@@ -36,11 +33,9 @@ bool f(const Grafo& g) {
             }
         }
     
-
     // CONDIZIONE 2. Il numero totale di archi di g è pari
     if (count_archi%2!=0)
         return false;
-
 
     // CONDIZIONE 1. il grado uscente di ogni nodo di g è minore del numero di nodi di g che hanno al più un arco entrante
     // conto nodi con al più un arco entrante
@@ -52,7 +47,6 @@ bool f(const Grafo& g) {
     for (int i=0; i<g.n(); ++i)
         if (grado_uscente[i] > count_max_uno_entrante)
             return false;
-
 
     return true;      
 }

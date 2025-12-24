@@ -22,9 +22,7 @@ attraversare per arrivare a destinazione, altrimenti dovrà stampare “IMPOSSIB
 #include <iostream>
 #include <vector>
 #include <algorithm>
-
 using namespace std;
-
 
 struct Soluzione {
     // istanza
