@@ -1,5 +1,5 @@
 int main() { 
-    int* matricola = new int[6] {2,6,1,1,9,0}//Inserire qui la tua matricola }; 
+    int* matricola = new int[6] {2,6,1,1,9,0}; 
  
     // 1. La seguente istruzione è corretta? Motivare la risposta 
     if (matricola.size() > 4) { 

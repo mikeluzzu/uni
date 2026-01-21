@@ -2,15 +2,15 @@
 #include <iostream>
 using namespace std;
 
-//void f(int& a) {if (a%2==0) a++; else a-=2;}
-//int &g(int& a) {int b=a; return b;}
+void f(int& a) {if (a%2==0) a++; else a-=2;}
+int &g(int& a) {int b=a; return b;}
 
 int main() {
 
 int* matricola = new int[6]{9,8,7,6,5,4};
 // 1. Le istruzioni seguenti sono corrette? Se si, cosa viene stampato?
-//f(g(matricola[2]));
-//cout << matricola[2] << endl;
+f(g(matricola[2]));
+cout << matricola[2] << endl;
     // non sono corrette
 
 
