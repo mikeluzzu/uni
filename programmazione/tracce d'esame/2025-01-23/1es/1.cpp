@@ -11,7 +11,7 @@ int* matricola = new int[6]{9,8,7,6,5,4};
 // 1. Le istruzioni seguenti sono corrette? Se si, cosa viene stampato?
 f(g(matricola[2]));
 cout << matricola[2] << endl;
-    // non sono corrette
+    // non sono corrette, la funzione g restituisce un riferimento a una variabile locale
 
 
 // 2. Le istruzioni seguenti sono corrette? Se si, cosa viene stampato?
@@ -24,7 +24,7 @@ q = p;                   // q punta ancora a matricola[3] (nulla è cambiato)
 cout << *(matricola+3) << " " << *(matricola+4) << endl;
 
 // 3. La seguente istruzione è corretta? Se si, cosa viene stampato?
-//cout << matricola[matricola+2] << endl; // non è corretta perche non prende l'intero con * 
+cout << matricola[matricola+2] << endl; // non è corretta perche non prende l'intero con * 
 
 // 4. Selezionare TUTTE le operazioni necessarie per deallocare la memoria allocata nel programma
 // a. delete[] matricola; // questa

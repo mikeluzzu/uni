@@ -1,14 +1,3 @@
-/*
-Dato un Grafo orientato g, un nodo di partenza s, un nodo di destinazione t e un arco (i,j) del 
-grafo, scrivere una funzione 
- bool f(const Grafo&g, unsigned s, unsigned t, pair<unsigned,unsigned> edge) { 
- ... 
-}  
- 
-che restituisca true se e solo se, dopo aver invertito l’orientamento dell’arco (i,j), il cammino 
-minimo da s a t diventa più breve
-*/
-
 int calcolaDistanzaMinima(const Grafo& g, unsigned s, unsigned t){
     queue<unsigned> q;
     vector<int> dist(g.numNodi(), INF);
