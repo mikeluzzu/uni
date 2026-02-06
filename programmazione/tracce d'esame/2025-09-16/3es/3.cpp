@@ -26,7 +26,7 @@ vector<pair<int,int> trovaNodiSovrapponibili(const Grafo& g){
     vector<pair<int,int>> risultato;
     int n = g.n();
 
-    for (int x= 0; x < n; x++){
+    for (int x = 0; x < n; x++){
         for (int y = 0; y < n; y++){
             if(stessiEntranti(g, x, y) && stessiUscenti(g,x, y)){
                 risultato.push_back(make_pair<x,y>);

@@ -5,19 +5,16 @@
 #include <map>
 #include <vector>
 using namespace std;
-
 struct Ristorante {
     string nome;
     string localita;
     pair<double, double> coordinate;
-
     int prezzo;
     int qualita;
     int location;
     int originalita;
 
     Ristorante() : prezzo(0), qualita(0), location(0), originalita(0) {}
-
     Ristorante(string n, string l, pair<double, double> coord,
                int p, int q, int loc, int orig) 
                : nome(n), localita(l), coordinate(coord), 
@@ -39,8 +36,7 @@ public:
     void aggiungiRecensione(string nome, string localita, pari<double,double> coordinate, int prezzo, int qualita, int location, int originalita){
         
         Ristorante r (nome,localita,coordinate,prezzo,qualita,location,originalita);
-        pairi<string,string> chiave = make_pair(nome,localita);
-
+        pair<string,string> chiave = make_pair(nome,localita);
         recensioni[chiave] = r;
     }
 
