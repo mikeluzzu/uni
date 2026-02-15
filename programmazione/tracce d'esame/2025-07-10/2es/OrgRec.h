@@ -33,18 +33,17 @@ class OrganizzaRecensioni {
 private:
     map<pair<string,string>, Ristorante> recensioni;
 public:
-    void aggiungiRecensione(string nome, string localita, pari<double,double> coordinate, int prezzo, int qualita, int location, int originalita){
+    void aggiungiRecensione(string nome, string localita, 
+        pari<double,double> coordinate, int prezzo, int qualita, int location, int originalita){
         
         Ristorante r (nome,localita,coordinate,prezzo,qualita,location,originalita);
-        pair<string,string> chiave = make_pair(nome,localita);
+        auto chiave = make_pair(nome,localita);
         recensioni[chiave] = r;
     }
 
     int valutazione(const string& rist, const string& loc , const string& cat){
-        pair<string,string> chiave = make_pair(rist, loc);
-
+        auto chiave = make_pair(rist, loc);
         if(recensioni.find(chiave) == recensioni.end()){return -1;}
-
         return recensioni[chiave].getVoto(cat);
     }
 
@@ -63,5 +62,4 @@ public:
         return risultato;
     }
 };
-
 #endif

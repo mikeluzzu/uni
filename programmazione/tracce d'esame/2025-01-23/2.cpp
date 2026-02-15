@@ -51,7 +51,8 @@ class Website {
                     daVisitare.pop();
                     // se ho trovato target, ritorno il livello
                     if (curr_page == target)
-                        return level;       
+                        return level;      
+                     
                     for (Webpage* w : curr_page.getLink()) {
                         if (find(visitate.begin(), visitate.end(), *w) == visitate.end()) {
                             visitate.push_back(*w);

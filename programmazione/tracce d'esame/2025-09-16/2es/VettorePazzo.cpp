@@ -18,7 +18,7 @@ public:
         if (size() % numeroPazzo == 0) {return 0;}
 
         // caso 1: i < 0 e |i| >= n
-        if (i < 0 && static_cast<unsigned> (-1) >= size()){
+        if (i < 0 && static_cast<unsigned> (-i) >= size()){
             return vector<unsigned>:: operator[](0);
         }
         

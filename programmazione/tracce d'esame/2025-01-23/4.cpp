@@ -71,7 +71,6 @@ void add(pair<int, int> mossa, Soluzione& sol) {
     sol.soluzione.push_back(sol.pos_corrente);
 }
 
-
 void remove(Soluzione& sol) {
     sol.soluzione.pop_back();
     
@@ -82,11 +81,9 @@ void remove(Soluzione& sol) {
         sol.pos_corrente = sol.soluzione.back();
 }
 
-
 bool isComplete(const Soluzione& sol) {
     return sol.pos_corrente == sol.destinazione;
 }
-
 
 bool solve(Soluzione& sol) {
     int index_mossa = 0;
@@ -105,9 +102,7 @@ bool solve(Soluzione& sol) {
     return false;
 }
 
-
 int main() {
-    // istanza di esempio
     pair<unsigned, unsigned> pos_iniziale = {0, 0};
     pair<unsigned, unsigned> destinazione = {4, 5};
     vector<pair<unsigned, unsigned>> proibite = {
@@ -115,7 +110,6 @@ int main() {
     };
 
     Soluzione sol = Soluzione(pos_iniziale, proibite, destinazione);
-   
     bool esito = solve(sol);
 
     if (esito) 

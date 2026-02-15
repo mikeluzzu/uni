@@ -4,12 +4,12 @@ using namespace std;
 
 class CalendarioRicevimenti{
 private:
-    map<string, int> ricevimenti;
+    map<string, vector<pair<int, string>>> ricevimenti;
 public:    
     bool chiediRicevimento(const string studente, const string giorno, const int ora){
         if(!isLibero(giorno,ora)){return false}
         
-        ricevimenti[giorno].push_back(ora);
+        ricevimenti[giorno].push_back(make_pair(ora, studente));
         return true;
     }
 
@@ -28,5 +28,17 @@ public:
 
     bool operator==(const CalendarioRicevimenti& altro) const{
         return ricevimenti == altro.ricevimenti;
+    }
+
+    vector<string> operator[](const string& giorno){
+        vector<string> studenti;
+        if(ricevimenti.find(giorno) == ricevimenti.end()){
+            return studenti;
+        }
+        
+        for(int i = 0; i < ricevimenti[giorno].size(); i++){
+            studenti.push_back(ricevimenti[giorno][i].second)
+        }
+        return studenti;
     }
 };

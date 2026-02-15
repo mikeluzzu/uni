@@ -14,8 +14,7 @@ unsigned getCapienza(unsigned idStanza){return (idStanza % 6) +1;}
 
 bool checkCompatibilita(const string& studente, const vector<string>& occupanti,
                         const vector<pair<string, string>>& inc){
-
-
+    
     for (const string& compagno : occupanti){
         for(const auto& coppia : inc) {
             if ((coppia.first == studente && coppia.second == compagno ) || 
