@@ -11,7 +11,6 @@ bool f(const Grafo& g){
             return false;
     }
 
-
     // trovo tutti i nodi con archi entranti
     int gradi_entranti[n];
     for(int j = 0; j < n; j++)
@@ -19,6 +18,7 @@ bool f(const Grafo& g){
 
     for(int i = 0; i < n; i++){
         for(int j = 0; j < n; j++){
+            // se c'e un nodo che va da i a j, c'e un entrante in j
             if(g(i,j))
                 gradi_entranti[j]++;
         }

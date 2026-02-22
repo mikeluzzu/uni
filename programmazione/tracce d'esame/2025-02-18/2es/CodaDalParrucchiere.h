@@ -42,7 +42,7 @@ class CodaDalParrucchiere{
             }
 
             // se tutti hanno 10 o piu clienti, rifiuta la prenotazione
-            inf(minClienti >= 10)
+            if(minClienti >= 10)
                 return false;
             
             //altrimenti assegna al parruchiere meno carico

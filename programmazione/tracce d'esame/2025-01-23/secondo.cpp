@@ -32,14 +32,14 @@ private:
 public:
     Website(string h) : homepage(h){}
 
-    int find_webpage(const WebPage& target){
+    int find_webpage(const WebPage& target) const {
         queue<Webpage> daVisitare;
         daVisitare.push(homepage)
 
         vector<Webpage> visitate;
         visitate.push_back(homepage);
 
-        int level;
+        int level = 0;
         while(!daVisitare.empty()){
             int levelSize = daVisitare.size();
             for(int i = 0; i < levelSize; i++){
@@ -48,7 +48,7 @@ public:
                 if (curr == target) 
                     return level;
 
-                for(Webpage* : curr.getLink()){
+                for(Webpage* w : curr.getLink()){
                     if (find(visitate.begin(), visitate.end(), w*) == visitate.end()){
                         visitate.push_back(w*);
                         daVisitare.push(w*);
